@@ -187,7 +187,7 @@ JuniperQueryAdapter::Traverse(juniper::IQueryVisitor *v) const
         v->VisitAND(&item, 2);
     }
     while (rc && iterator.next()) {
-        bool isSpecialToken = (iterator.getFlags() & search::ParseItem::IFLAG_SPECIALTOKEN) != 0;
+        bool isSpecialToken = iterator.hasSpecialTokenFlag();
         switch (iterator.getType()) {
         case search::ParseItem::ITEM_OR:
         case search::ParseItem::ITEM_WEAK_AND:

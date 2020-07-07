@@ -27,10 +27,10 @@ public:
         while (!builder.hasError() && queryStack.next()) {
             Term *t = createQueryTerm(queryStack, builder, pureTermView);
             if (!builder.hasError() && t) {
-                if (queryStack.getFlags() & ParseItem::IFLAG_NORANK) {
+                if (queryStack.hasNoRankFlag()) {
                     t->setRanked(false);
                 }
-                if (queryStack.getFlags() & ParseItem::IFLAG_NOPOSITIONDATA) {
+                if (queryStack.hasNoPositionDataFlag()) {
                     t->setPositionData(false);
                 }
             }
